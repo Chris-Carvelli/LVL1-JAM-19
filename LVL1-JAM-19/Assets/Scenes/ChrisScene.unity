@@ -417,36 +417,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1560870007
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1560870008}
-  m_Layer: 0
-  m_Name: TMP
-  m_TagString: Untagged
-  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1560870008
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1560870007}
-  m_LocalRotation: {x: 0.13052624, y: -0, z: -0, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1129107976927749270}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1596040114
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,12 +536,12 @@ MonoBehaviour:
   players:
   - prefab: {fileID: 4374092658635594002, guid: e2370bcfceae84a48bae21a21c6b9579,
       type: 3}
-    collayerColor: {r: 0.12941177, g: 0.5882353, b: 0.9529412, a: 1}
+    playerColor: {r: 0, g: 0, b: 0, a: 0}
     teamColor: {r: 0.73333335, g: 0.87058824, b: 0.9843137, a: 1}
     spawn: {fileID: 1451197995}
   - prefab: {fileID: 4374092658635594002, guid: e2370bcfceae84a48bae21a21c6b9579,
       type: 3}
-    collayerColor: {r: 0.95686275, g: 0.2627451, b: 0.21176471, a: 1}
+    playerColor: {r: 0, g: 0, b: 0, a: 0}
     teamColor: {r: 1, g: 0.8039216, b: 0.8235294, a: 1}
     spawn: {fileID: 1596040115}
 --- !u!4 &1733622770
@@ -750,8 +720,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.86, y: 7.56, z: -2.03}
   m_LocalScale: {x: 7, y: 7, z: 7}
-  m_Children:
-  - {fileID: 1560870008}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -860,8 +829,6 @@ MonoBehaviour:
   targetPc: {fileID: 0}
   i: 1
   speed: 10
-  TMP: {fileID: 1560870008}
-  targetRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1129107976927749275
 MonoBehaviour:
   m_ObjectHideFlags: 0

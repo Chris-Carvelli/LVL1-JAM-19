@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public struct PlayerInfo {
 	public PlayerController prefab;
-	public Color collayerColor;
+	public Color playerColor;
 	public Color teamColor;
 	public Transform spawn;
 }
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
 			pc.playerNumber = pNum++;
 
             foreach (SpriteRenderer sp in pc.GetComponentsInChildren<SpriteRenderer>())
-                sp.color = player.color;
+                sp.color = player.playerColor;
 			pc.transform.position = player.spawn.position;
 		}
 	}
