@@ -34,7 +34,8 @@ public class GameManager : MonoBehaviour
 			pc.gameObject.layer = LayerMask.NameToLayer($"team_{pNum}");
 			pc.playerNumber = pNum++;
 
-			pc.GetComponent<SpriteRenderer>().color = player.collayerColor;
+            foreach (SpriteRenderer sp in pc.GetComponentsInChildren<SpriteRenderer>())
+                sp.color = player.color;
 			pc.transform.position = player.spawn.position;
 		}
 	}
