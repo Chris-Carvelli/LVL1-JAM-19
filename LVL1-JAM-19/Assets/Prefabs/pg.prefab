@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumber: 1
-  speed: 7.5
+  speed: 12
 --- !u!61 &4374092658635594003
 BoxCollider2D:
   m_ObjectHideFlags: 0
