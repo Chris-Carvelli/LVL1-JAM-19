@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.08823084, g: 0.0799092, b: 0.06502752, a: 1}
+  m_IndirectSpecularColor: {r: 0.088230915, g: 0.07990921, b: 0.06502752, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -182,7 +182,7 @@ MonoBehaviour:
     playerColor: {r: 0.12941177, g: 0.5882353, b: 0.9529412, a: 1}
     teamColor: {r: 0.73333335, g: 0.87058824, b: 0.9843137, a: 1}
     spawn: {fileID: 1451197995}
-  - prefab: {fileID: 4374092658635594002, guid: e2370bcfceae84a48bae21a21c6b9579,
+  - prefab: {fileID: 4374092658635594002, guid: 357fbb6f436f74999baf174446d335e0,
       type: 3}
     playerColor: {r: 0.95686275, g: 0.2627451, b: 0.21176471, a: 1}
     teamColor: {r: 1, g: 0.8039216, b: 0.8235294, a: 1}
