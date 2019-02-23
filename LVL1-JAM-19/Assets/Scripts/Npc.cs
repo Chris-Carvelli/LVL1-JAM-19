@@ -58,7 +58,7 @@ public class Npc : MonoBehaviour {
     }
 
     void selectRandomIdleFunction() {
-        currentIdleState = (NpcIdleState)Random.Range(1, 3);
+        currentIdleState = (NpcIdleState)Random.Range(1, 4);
         if (currentIdleState == NpcIdleState.RandomEvent && (idleEvents == null || idleEvents.Count == 0)) {
             currentIdleState = NpcIdleState.Walking;
         }
@@ -66,7 +66,9 @@ public class Npc : MonoBehaviour {
         if (currentIdleState == NpcIdleState.Walking) {
             startMovingToRandomPosition();
         } else {
-            idleEvents[Random.Range(0, idleEvents.Count)].Invoke();
+            if (currentIdleState == NpcIdleState.RandomEvent) {
+                idleEvents[Random.Range(0, idleEvents.Count)].Invoke();
+            }
             actionTimer = Random.Range(1f, 3f);
             time = 0;
         }
@@ -136,5 +138,6 @@ public class Npc : MonoBehaviour {
 enum NpcIdleState {
     None = 0,
     Walking = 1,
-    RandomEvent = 2
+    RandomEvent = 2,
+    StandStill = 3
 }
