@@ -71,4 +71,9 @@ public class PlayerController : MonoBehaviour
 	public Transform getTargetTransform() {
 		return childrenContainer.transform;
 	}
+
+	public void setTint(Color color) {
+		foreach (SpriteRenderer sp in GetComponentsInChildren<SpriteRenderer>())
+			sp.color = color;
+	}
 }
