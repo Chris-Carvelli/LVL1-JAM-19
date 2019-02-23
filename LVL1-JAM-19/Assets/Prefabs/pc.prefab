@@ -222,14 +222,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumber: 1
-  diretcionTarget: {fileID: 0}
-  coloredObjects:
+  tintedRendereres:
   - {fileID: 4794059720877477415}
   speed: 8
-  axis: 0
-  vel: 0
-  Asin: 0
-  velCos: 0
+  childrenCount: 0
+  _OnMoveTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _OnStopTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!61 &4374092658635594003
 BoxCollider2D:
   m_ObjectHideFlags: 0

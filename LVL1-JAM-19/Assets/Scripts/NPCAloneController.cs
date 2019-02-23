@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(BoxCollider2D))]
 public class NPCAloneController : MonoBehaviour
 {
+	[SerializeField] private UnityEvent OnJoinsBlob;
+	[SerializeField] private UnityEvent OnChangesBlob;
+
 	private BoxCollider2D coll;
 	private NPCBlobConroller controller;
 	// Start is called before the first frame update
@@ -24,13 +28,17 @@ public class NPCAloneController : MonoBehaviour
 	private void OnTriggerEnter2D(Collider2D collision) {
 		if ((collision.gameObject.layer == LayerMask.NameToLayer("team_1") ||
 			collision.gameObject.layer == LayerMask.NameToLayer("team_2")) &&
-			gameObject.layer != collision.gameObject.layer){
+			gameObject.layer != collision.gameObject.layer) {
+			OnJoinsBlob.Invoke();
+
 			int team = collision.gameObject.layer == LayerMask.NameToLayer("team_1") ? 0 : 1;
 			gameObject.layer = collision.gameObject.layer;
 
 			controller.enabled = true;
-			if (controller.targetPc != null)
+			if (controller.targetPc != null) {
+				OnChangesBlob.Invoke();
 				controller.targetPc.childrenCount--;
+			}
 
 			NPCBlobConroller other = collision.gameObject.GetComponent<NPCBlobConroller>();
 
