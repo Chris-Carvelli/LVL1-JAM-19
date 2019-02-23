@@ -351,6 +351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumber: 1
+  formation: 1
   tintedRendereres:
   - {fileID: 4794059720877477415}
   speed: 8
@@ -409,6 +410,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  vel: {x: 0, y: 0, z: 0}
 --- !u!61 &4374092658635594003
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -467,7 +469,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243103390519876168, guid: 3270212ec31fe40c7bedcb10047cb79c,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 4ad1c5b0cf743442085b450954b4254b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 64431ad984a8f48b78542391890e253a, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
