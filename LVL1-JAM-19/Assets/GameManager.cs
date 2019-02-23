@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [System.Serializable]
 public struct PlayerInfo {
@@ -15,12 +16,25 @@ public class GameManager : MonoBehaviour
 {
 	private static GameManager _instance = null;
 	public List<PlayerInfo> players;
-	
-	public static GameManager getManager() {
-		return _instance;
-	}
 
-	private void Awake() {
+    public static GameManager getManager() {
+        return _instance;
+    }
+
+    GameState _gameState = GameState.StartCountDown;
+    public GameState getGameState() {
+        return _gameState;
+    }
+
+    PlayerController player1, player2;
+    public int player1Score = 0;
+    public int player2Score = 0;
+
+    public List<UnityEvent> countDownEvents;
+    public UnityEvent gameOverEvent;
+
+
+    private void Awake() {
 		if (_instance == null)
 			_instance = this;
 	}
@@ -31,17 +45,99 @@ public class GameManager : MonoBehaviour
 		int pNum = 1;
 		foreach (PlayerInfo player in players) {
 			PlayerController pc = Instantiate(player.prefab);
-			pc.name += $"_{pNum}";
+            if (pNum == 1) {
+                player1 = pc;
+            } else {
+                player2 = pc;
+            }
+            pc.name += $"_{pNum}";
 			pc.gameObject.layer = LayerMask.NameToLayer($"team_{pNum}");
 			pc.playerNumber = pNum++;
             pc.setTint(player.playerColor);
 			pc.transform.position = player.spawn.position;
 		}
-	}
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
+
+    private void Update() {
+        if (_gameState == GameState.StartCountDown) {
+            startCountDown();
+        }
+    }
+
+    void startCountDown() {
+        _gameState = GameState.IsCountingDown;
+        StartCoroutine(countDown());
+    }
+
+    IEnumerator countDown() {
+        for(int i = 0; i < countDownEvents.Count; i++) {
+            if(i == 0) {
+                // "Ready" takes longer to say in japanese
+                yield return new WaitForSeconds(1.5f);
+            } else {
+                yield return new WaitForSeconds(1);
+            }
+            countDownEvents[i].Invoke();
+        }
+        countDownEnded();
+    }
+
+    void countDownEnded() {
+        _gameState = GameState.Playing;
+    }
+
+    public void addScore(int player) {
+        if (player == 1) {
+            player1Score++;
+        } else if (player == 2) {
+            player2Score++;
+        }
+    }
+
+    public void subtractScore(int player) {
+        if (player == 1) {
+            player1Score--;
+        } else if (player == 2) {
+            player2Score--;
+        }
+    }
+
+    public void checkGameState() {
+        if (player1Score + player2Score >= NpcManager.instance.npcs.Count) {
+            // All npcs have been collected
+            gameOver();
+        }
+    }
+
+    void gameOver() {
+        _gameState = GameState.GameOver;
+
+        if (player1Score > player2Score) {
+            print("Player 1 wins");
+            player1.playerIsWinner();
+            player2.playerIsLoser();
+
+        } else if (player2Score > player1Score) {
+            print("Player 2 wins");
+            player1.playerIsLoser();
+            player2.playerIsWinner();
+
+        } else {
+            print("Draw");
+            player1.playerDrawn();
+            player2.playerDrawn();
+        }
+
+        print("GAME OVER");
+        if (gameOverEvent != null) {
+            gameOverEvent.Invoke();
+        }
+    }
+}
+
+public enum GameState {
+    StartCountDown = 0,
+    IsCountingDown = 1,
+    Playing = 2,
+    GameOver = 3
 }

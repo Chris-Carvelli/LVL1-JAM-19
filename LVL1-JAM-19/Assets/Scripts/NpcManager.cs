@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class NpcManager : MonoBehaviour {
     public static NpcManager instance;
-
-    GameManager gameManager;
+    
     public List<Npc> npcPrefabs;
     public List<Npc> npcs;
     public int initialNpcCount = 10;
@@ -19,7 +18,6 @@ public class NpcManager : MonoBehaviour {
     }
 
     void Start() {
-        gameManager = FindObjectOfType(typeof(GameManager)) as GameManager;
         detectLevelBorders();
 
         spawnNpcsAtRandom(initialNpcCount);
@@ -92,7 +90,7 @@ public class NpcManager : MonoBehaviour {
     bool positionContainsAPlayer(Vector2 point) {
         float marginToPlayers = 2;
 
-        foreach (PlayerInfo playerInfo in gameManager.players) {
+        foreach (PlayerInfo playerInfo in GameManager.getManager().players) {
             if (point.x >= playerInfo.spawn.position.x - marginToPlayers && point.x <= playerInfo.spawn.position.x + marginToPlayers && point.y >= playerInfo.spawn.position.y - marginToPlayers && point.y <= playerInfo.spawn.position.y + marginToPlayers) {
                 return true;
             }
