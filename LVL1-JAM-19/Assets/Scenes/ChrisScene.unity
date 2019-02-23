@@ -413,7 +413,7 @@ GameObject:
   - component: {fileID: 1432289017}
   - component: {fileID: 1432289019}
   - component: {fileID: 1432289020}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: cactus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -476,7 +476,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1432289016}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.03, z: 0}
+  m_LocalPosition: {x: -3.41, y: -1, z: 0}
   m_LocalScale: {x: 7, y: 7, z: 7}
   m_Children: []
   m_Father: {fileID: 0}
@@ -659,18 +659,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players:
-  - prefab: {fileID: 4374092658635594002, guid: e2370bcfceae84a48bae21a21c6b9579,
+  - prefab: {fileID: 4374092658635594002, guid: 357fbb6f436f74999baf174446d335e0,
       type: 3}
     playerColor: {r: 0.12941177, g: 0.5882353, b: 0.9529412, a: 1}
     teamColor: {r: 0.73333335, g: 0.87058824, b: 0.9843137, a: 1}
     teamColorDark: {r: 0.06666667, g: 0.33333334, b: 0.8, a: 1}
     spawn: {fileID: 1451197995}
-  - prefab: {fileID: 4374092658635594002, guid: e2370bcfceae84a48bae21a21c6b9579,
+  - prefab: {fileID: 4374092658635594002, guid: 9053a8c6a6f82499ebf02afafb766a43,
       type: 3}
     playerColor: {r: 0.95686275, g: 0.2627451, b: 0.21176471, a: 1}
     teamColor: {r: 1, g: 0.8039216, b: 0.8235294, a: 1}
-    teamColorDark: {r: 0.7176471, g: 0.10980392, b: 0.10980392, a: 0}
+    teamColorDark: {r: 0.7176471, g: 0.10980392, b: 0.10980392, a: 1}
     spawn: {fileID: 1596040115}
+  player1Score: 0
+  player2Score: 0
+  countDownEvents: []
+  gameOverEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!4 &1733622770
 Transform:
   m_ObjectHideFlags: 0
@@ -701,7 +709,7 @@ MonoBehaviour:
   - {fileID: 9153757168358301075, guid: 8ef42b4ea9808164e84aea0faba109ff, type: 3}
   - {fileID: 9153757168358301075, guid: 05718f1502ef84471b7daed50e15a6c3, type: 3}
   npcs: []
-  initialNpcCount: 0
+  initialNpcCount: 100
   topBorder: {fileID: 1655339633}
   bottomBorder: {fileID: 1926782958}
   leftBorder: {fileID: 473496721}

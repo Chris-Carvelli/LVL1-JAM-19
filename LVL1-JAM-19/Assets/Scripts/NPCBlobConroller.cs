@@ -32,11 +32,17 @@ public class NPCBlobConroller : MonoBehaviour
 
 	//TMP
 	private float radius = 1.2f;
-    // Start is called before the first frame update
-    void Start()
+
+
+	private void Awake() {
+
+		renderers = GetComponentsInChildren<SpriteRenderer>();
+	}
+
+	// Start is called before the first frame update
+	void Start()
     {
 		body = GetComponent<Rigidbody2D>();
-		renderers = GetComponentsInChildren<SpriteRenderer>();
 
 		startRot = transform.rotation;
 
@@ -149,10 +155,18 @@ public class NPCBlobConroller : MonoBehaviour
 	}
 
 	private IEnumerator _kill() {
-		Color[] colors = new[] {
-			GameManager.getManager().players[team].teamColor,
-			GameManager.getManager().players[team].teamColorDark
-		};
+		Color[] colors;
+
+		if (team > 0)
+			colors = new[] {
+				GameManager.getManager().players[team].teamColor,
+				GameManager.getManager().players[team].teamColorDark
+			};
+		else
+			colors = new[] {
+				Color.white,
+				new Color(0.3f, 0.3f, 0.3f)
+			};
 
 		var i = 15;
 		for (; i >= 0; i--) {
