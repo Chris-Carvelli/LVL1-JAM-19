@@ -7,6 +7,7 @@ public struct PlayerInfo {
 	public PlayerController prefab;
 	public Color playerColor;
 	public Color teamColor;
+	public Color teamColorDark	;
 	public Transform spawn;
 }
 

@@ -20,14 +20,15 @@ public class NPCBlobConroller : MonoBehaviour
 	public float maxSpeed = 2;
 
 	private Rigidbody2D body;
+	private SpriteRenderer[] renderers;
 
 	private Quaternion startRot;
 
 	//for katamari formation
 	public Vector3 glueOffset;
 
-	private bool bouncing = false;
-	private float collTime = 0;
+	public bool bouncing = false;
+	public float collTime = 0;
 
 	//TMP
 	private float radius = 1.2f;
@@ -35,6 +36,7 @@ public class NPCBlobConroller : MonoBehaviour
     void Start()
     {
 		body = GetComponent<Rigidbody2D>();
+		renderers = GetComponentsInChildren<SpriteRenderer>();
 
 		startRot = transform.rotation;
 
@@ -137,9 +139,29 @@ public class NPCBlobConroller : MonoBehaviour
 
 			body.AddForce(dir * 10);
 
-			bouncing = true;
-			collTime = 0.0f;
+			//bouncing = true;
+			//collTime = 0.0f;
 		}
+	}
+
+	public void kill() {
+		StartCoroutine(_kill());
+	}
+
+	private IEnumerator _kill() {
+		Color[] colors = new[] {
+			GameManager.getManager().players[team].teamColor,
+			GameManager.getManager().players[team].teamColorDark
+		};
+
+		var i = 15;
+		for (; i >= 0; i--) {
+			foreach (SpriteRenderer renderer in renderers)
+				renderer.color = colors[i % 2];
+			yield return new WaitForSeconds(0.1f);
+		}
+
+		Destroy(gameObject);
 	}
 }
 
