@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
@@ -8,6 +9,8 @@ public class PlayerController : MonoBehaviour
 	[Header("main")]
 	[Range(1, 2)]
 	public int playerNumber = 1;
+
+
 
 	[Header("movement")]
 	public float speed = 1;
@@ -17,7 +20,10 @@ public class PlayerController : MonoBehaviour
 
 	public int childrenCount = 0;
 
-	private string horAxis;
+    [SerializeField] private UnityEvent _OnMoveTrigger;
+    [SerializeField] private UnityEvent _OnStopTrigger;
+
+    private string horAxis;
 	private string verAxis;
 
 	private Vector3 direction;
@@ -53,20 +59,25 @@ public class PlayerController : MonoBehaviour
 		if (vel.magnitude > 0) {
 			float angle = Mathf.Atan2(vel.y, vel.x) * Mathf.Rad2Deg;
 			Quaternion targetDir = Quaternion.AngleAxis(angle, Vector3.forward);
-
+            _OnMoveTrigger.Invoke();
 			childrenContainer.transform.rotation = Quaternion.RotateTowards(targetDir, childrenContainer.transform.rotation, 0);
 		}
-		//float xCoord = transform.position.x + Input.GetAxis(horAxis) * speed;
-		//float yCoord = transform.position.y + Input.GetAxis(verAxis) * speed;
 
-		//Vector3 deltaV = new Vector3(
-		//	Mathf.Clamp(xCoord, xMargins.x, xMargins.y),
-		//	Mathf.Clamp(yCoord, yMargins.x, yMargins.y),
-		//	0
-		//	);
+        if (vel.magnitude <= 0)
+        {
+            _OnStopTrigger.Invoke();
+        }
+        //float xCoord = transform.position.x + Input.GetAxis(horAxis) * speed;
+        //float yCoord = transform.position.y + Input.GetAxis(verAxis) * speed;
 
-		//transform.position = deltaV;
-	}
+        //Vector3 deltaV = new Vector3(
+        //	Mathf.Clamp(xCoord, xMargins.x, xMargins.y),
+        //	Mathf.Clamp(yCoord, yMargins.x, yMargins.y),
+        //	0
+        //	);
+
+        //transform.position = deltaV;
+    }
 
 	public Transform getTargetTransform() {
 		return childrenContainer.transform;
