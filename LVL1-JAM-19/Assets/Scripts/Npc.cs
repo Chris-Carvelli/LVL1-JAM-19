@@ -18,10 +18,13 @@ public class Npc : MonoBehaviour {
 
     NpcIdleState currentIdleState = NpcIdleState.None;
 
+    LayerMask currentLayer;
+
     public List<UnityEvent> idleEvents;
 
     private void Awake() {
         body = GetComponent<Rigidbody2D>();
+        currentLayer = LayerMask.NameToLayer("Npc");
     }
 
     private void Start() {
@@ -36,6 +39,8 @@ public class Npc : MonoBehaviour {
             }
             performIdleFunction();
         }
+
+        checkForTeamSwitch();
     }
 
 
@@ -88,6 +93,36 @@ public class Npc : MonoBehaviour {
         }
 
         targetPosition = destination;
+    }
+
+    void checkForTeamSwitch() {
+        if (currentLayer != gameObject.layer) {
+            int currentTeamId = 0;
+            int newTeamId = 0;
+            if (currentLayer == LayerMask.NameToLayer("team_1")) {
+                currentTeamId = 1;
+            } else if(currentLayer == LayerMask.NameToLayer("team_2")) {
+                currentTeamId = 2;
+            }
+
+            currentLayer = gameObject.layer;
+
+            if (currentLayer == LayerMask.NameToLayer("team_1")) {
+                newTeamId = 1;
+            } else if (currentLayer == LayerMask.NameToLayer("team_2")) {
+                newTeamId = 2;
+            }
+            if (currentTeamId > 0) {
+                // Subtract score
+                GameManager.getManager().subtractScore(currentTeamId);
+            }
+            if (newTeamId > 0) {
+                // Add score
+                GameManager.getManager().addScore(newTeamId);
+            }
+
+            GameManager.getManager().checkGameState();
+        }
     }
 
     /// <summary>

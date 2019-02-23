@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private UnityEvent _OnMoveTrigger;
     [SerializeField] private UnityEvent _OnStopTrigger;
 
+    public UnityEvent winEvent, loseEvent, drawEvent;
+
     private string horAxis;
 	private string verAxis;
 
@@ -37,10 +39,13 @@ public class PlayerController : MonoBehaviour
 	private Rigidbody2D body;
 	private ChildrenComponent childrenContainer;
 
-	// Start is called before the first frame update
-	void Start()
+    private void Awake() {
+        body = GetComponent<Rigidbody2D>();
+    }
+
+    // Start is called before the first frame update
+    void Start()
     {
-		body = GetComponent<Rigidbody2D>();
 		childrenContainer = GetComponentInChildren<ChildrenComponent>();
 
 		horAxis = $"Horizontal_{playerNumber}";
@@ -51,6 +56,9 @@ public class PlayerController : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
+        if (GameManager.getManager().getGameState() != GameState.Playing) {
+            return;
+        }
 		float xVel = Input.GetAxis(horAxis) * speed;
 		float yVel = Input.GetAxis(verAxis) * speed;
 		vel = new Vector2(xVel, yVel);
@@ -85,4 +93,25 @@ public class PlayerController : MonoBehaviour
 		foreach (SpriteRenderer sp in tintedRendereres)
 			sp.color = color;
 	}
+
+    public void playerIsWinner() {
+        body.velocity = Vector2.zero;
+        if(winEvent != null) {
+            winEvent.Invoke();
+        }
+    }
+
+    public void playerIsLoser() {
+        body.velocity = Vector2.zero;
+        if (loseEvent != null) {
+            loseEvent.Invoke();
+        }
+    }
+
+    public void playerDrawn() {
+        body.velocity = Vector2.zero;
+        if (drawEvent != null) {
+            drawEvent.Invoke();
+        }
+    }
 }
