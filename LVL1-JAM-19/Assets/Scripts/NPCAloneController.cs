@@ -27,6 +27,9 @@ public class NPCAloneController : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D collision) {
 		if (gameObject.layer == LayerMask.NameToLayer("Npc")) {
+            if (collision.gameObject.layer != LayerMask.NameToLayer("team_1") && collision.gameObject.layer != LayerMask.NameToLayer("team_2")) {
+                return;
+            }
 			OnJoinsBlob.Invoke();
 
 			int team = collision.gameObject.layer == LayerMask.NameToLayer("team_1") ? 0 : 1;
