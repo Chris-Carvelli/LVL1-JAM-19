@@ -150,6 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roamRadius: 2
   speed: 1
+  idleEvents: []
 --- !u!61 &7275555614380185695
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -209,6 +210,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 654677be00f11a84483da809274e08cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnJoinsBlob:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnChangesBlob:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &7378678388096242625
 MonoBehaviour:
   m_ObjectHideFlags: 0
