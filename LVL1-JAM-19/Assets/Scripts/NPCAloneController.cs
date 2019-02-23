@@ -6,11 +6,14 @@ using UnityEngine;
 public class NPCAloneController : MonoBehaviour
 {
 	private BoxCollider2D coll;
-    // Start is called before the first frame update
-    void Start()
+	private NPCBlobConroller controller;
+	// Start is called before the first frame update
+	void Start()
     {
 		coll = GetComponent<BoxCollider2D>();
-    }
+		controller = GetComponent<NPCBlobConroller>();
+
+	}
 
     // Update is called once per frame
     void Update()
@@ -19,19 +22,23 @@ public class NPCAloneController : MonoBehaviour
     }
 
 	private void OnTriggerEnter2D(Collider2D collision) {
-		if (collision.gameObject.layer == LayerMask.NameToLayer("team_1") ||
-			collision.gameObject.layer == LayerMask.NameToLayer("team_2")) {
+		if ((collision.gameObject.layer == LayerMask.NameToLayer("team_1") ||
+			collision.gameObject.layer == LayerMask.NameToLayer("team_2")) &&
+			gameObject.layer != collision.gameObject.layer){
 			int team = collision.gameObject.layer == LayerMask.NameToLayer("team_1") ? 0 : 1;
+			gameObject.layer = collision.gameObject.layer;
 
-			NPCBlobConroller controller = GetComponent<NPCBlobConroller>();
 			controller.enabled = true;
+			if (controller.targetPc != null)
+				controller.targetPc.childrenCount--;
 
 			NPCBlobConroller other = collision.gameObject.GetComponent<NPCBlobConroller>();
 
 			controller.targetPc = other != null ? other.targetPc : collision.GetComponent<PlayerController>();
 			transform.SetParent(controller.targetPc.getTargetTransform());
+			controller.i = ++controller.targetPc.childrenCount;
 
-			controller.GetComponent<SpriteRenderer>().color = GameManager.getManager().players[team].teamColor;
+			controller.setTint(GameManager.getManager().players[team].teamColor);
 
 			enabled = false;
 		}

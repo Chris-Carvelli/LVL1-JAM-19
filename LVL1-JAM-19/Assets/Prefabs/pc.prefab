@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumber: 1
-  diretcionTarget: {fileID: 0}
+  diretcionTarget: {fileID: 154046606765948621}
   speed: 8
   axis: 0
   vel: 0

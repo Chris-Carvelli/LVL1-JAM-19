@@ -111,6 +111,8 @@ GameObject:
   - component: {fileID: 9153757168358301075}
   - component: {fileID: 7275555614380185695}
   - component: {fileID: 1901675803086897322}
+  - component: {fileID: 316840776447997329}
+  - component: {fileID: 7378678388096242625}
   m_Layer: 9
   m_Name: Npc
   m_TagString: Untagged
@@ -158,7 +160,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -195,6 +197,33 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &316840776447997329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2527477937899507144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 654677be00f11a84483da809274e08cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7378678388096242625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2527477937899507144}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66d7c069b9a3274448aeb9a997c262d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetPc: {fileID: 0}
+  i: 0
+  speed: 10
 --- !u!1 &5710583984273898565
 GameObject:
   m_ObjectHideFlags: 0

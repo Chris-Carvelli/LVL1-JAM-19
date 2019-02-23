@@ -54,7 +54,7 @@ public class NpcManager : MonoBehaviour {
             return;
         }
         Npc npcPrefab = npcPrefabs[Random.Range(0, npcPrefabs.Count)];
-        Npc newNpc = Instantiate(npcPrefab, spawnPoint - Vector3.forward / 2, npcPrefab.transform.rotation);
+        Npc newNpc = Instantiate(npcPrefab, spawnPoint/* - Vector3.forward / 2*/, npcPrefab.transform.rotation);
         npcs.Add(newNpc);
     }
 

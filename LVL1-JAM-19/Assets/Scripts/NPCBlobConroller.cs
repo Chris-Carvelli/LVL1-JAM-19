@@ -67,4 +67,9 @@ public class NPCBlobConroller : MonoBehaviour
 	private float getYoffset() {
 		return (((i - 1) / 3) + 1) * radius;
 	}
+
+	public void setTint(Color color) {
+		foreach (SpriteRenderer sp in GetComponentsInChildren<SpriteRenderer>())
+			sp.color = color;
+	}
 }

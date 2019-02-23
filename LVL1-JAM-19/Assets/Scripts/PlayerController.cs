@@ -8,13 +8,14 @@ public class PlayerController : MonoBehaviour
 	[Header("main")]
 	[Range(1, 2)]
 	public int playerNumber = 1;
-	public Transform diretcionTarget;
 
 	[Header("movement")]
 	public float speed = 1;
 	//TODO if we don't use analog stricks, this will be better than rely on input settings
 	//public float accelleration = 1;
 	//public AnimationCurve accellerationCurve;
+
+	public int childrenCount = 0;
 
 	private string horAxis;
 	private string verAxis;
