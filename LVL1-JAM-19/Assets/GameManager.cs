@@ -20,7 +20,9 @@ public class GameManager : MonoBehaviour
 		foreach (PlayerInfo player in players) {
 			PlayerController pc = Instantiate(player.prefab);
 			pc.playerNumber = pNum++;
-			pc.GetComponent<SpriteRenderer>().color = player.color;
+
+            foreach (SpriteRenderer sp in pc.GetComponentsInChildren<SpriteRenderer>())
+                sp.color = player.color;
 			pc.transform.position = player.spawn.position;
 		}
 	}
