@@ -350,6 +350,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumber: 1
+  tintedRendereres:
+  - {fileID: 4794059720877477415}
   speed: 8
   childrenCount: 0
   _OnMoveTrigger:
@@ -384,10 +386,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  axis: 0
-  vel: 0
-  Asin: 0
-  velCos: 0
 --- !u!61 &4374092658635594003
 BoxCollider2D:
   m_ObjectHideFlags: 0

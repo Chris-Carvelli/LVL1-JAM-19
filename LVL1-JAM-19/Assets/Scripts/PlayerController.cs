@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 	[Range(1, 2)]
 	public int playerNumber = 1;
 
-
+	public List<SpriteRenderer> tintedRendereres;
 
 	[Header("movement")]
 	public float speed = 1;
@@ -41,12 +41,6 @@ public class PlayerController : MonoBehaviour
 		verAxis = $"Vertical_{playerNumber}";
 	}
 
-	[Header("Debug")]
-	public float axis;
-	public float vel;
-	public float Asin;
-	public float velCos;
-
 	// Update is called once per frame
 	void Update()
     {
@@ -67,24 +61,14 @@ public class PlayerController : MonoBehaviour
         {
             _OnStopTrigger.Invoke();
         }
-        //float xCoord = transform.position.x + Input.GetAxis(horAxis) * speed;
-        //float yCoord = transform.position.y + Input.GetAxis(verAxis) * speed;
-
-        //Vector3 deltaV = new Vector3(
-        //	Mathf.Clamp(xCoord, xMargins.x, xMargins.y),
-        //	Mathf.Clamp(yCoord, yMargins.x, yMargins.y),
-        //	0
-        //	);
-
-        //transform.position = deltaV;
-    }
+	}
 
 	public Transform getTargetTransform() {
 		return childrenContainer.transform;
 	}
 
 	public void setTint(Color color) {
-		foreach (SpriteRenderer sp in GetComponentsInChildren<SpriteRenderer>())
+		foreach (SpriteRenderer sp in tintedRendereres)
 			sp.color = color;
 	}
 }
