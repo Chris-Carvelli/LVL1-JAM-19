@@ -73,7 +73,7 @@ public class Npc : MonoBehaviour {
         } else {
             time += Time.deltaTime;
             if (time > actionTimer) {
-                selectRandomIdleFunction();
+                currentIdleState = NpcIdleState.None;
             }
         }
     }
