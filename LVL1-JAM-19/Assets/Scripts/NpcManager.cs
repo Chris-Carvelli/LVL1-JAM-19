@@ -19,7 +19,7 @@ public class NpcManager : MonoBehaviour {
     }
 
     void Start() {
-        gameManager = GameObject.FindObjectOfType(typeof(GameManager)) as GameManager;
+        gameManager = FindObjectOfType(typeof(GameManager)) as GameManager;
         detectLevelBorders();
 
         spawnNpcsAtRandom(initialNpcCount);
@@ -96,7 +96,6 @@ public class NpcManager : MonoBehaviour {
             if (point.x >= playerInfo.spawn.position.x - marginToPlayers && point.x <= playerInfo.spawn.position.x + marginToPlayers && point.y >= playerInfo.spawn.position.y - marginToPlayers && point.y <= playerInfo.spawn.position.y + marginToPlayers) {
                 return true;
             }
-
         }
         return false;
     }
