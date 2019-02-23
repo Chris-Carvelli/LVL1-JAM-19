@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 	[Range(1, 2)]
 	public int playerNumber = 1;
 	public Transform diretcionTarget;
+    public List<SpriteRenderer> coloredObjects;
 
 	[Header("movement")]
 	public float speed = 1;
@@ -70,4 +71,10 @@ public class PlayerController : MonoBehaviour
 	public Transform getTargetTransform() {
 		return childrenContainer.transform;
 	}
+
+    public void setColor(Color color) {
+        foreach (SpriteRenderer renderer in coloredObjects) {
+            renderer.color = color;
+        }
+    }
 }

@@ -223,6 +223,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNumber: 1
   diretcionTarget: {fileID: 0}
+  coloredObjects:
+  - {fileID: 4794059720877477415}
   speed: 8
   axis: 0
   vel: 0
