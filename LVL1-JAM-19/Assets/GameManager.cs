@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 [System.Serializable]
@@ -33,7 +34,7 @@ public class GameManager : MonoBehaviour
 
     public List<UnityEvent> countDownEvents;
     public UnityEvent gameOverEvent;
-
+    public Text player1ScoreText, player2ScoreText;
 
     private void Awake() {
 		if (_instance == null)
@@ -107,6 +108,8 @@ public class GameManager : MonoBehaviour
         if (player1Score + player2Score >= NpcManager.instance.npcs.Count) {
             // All npcs have been collected
             gameOver();
+            player1ScoreText.text = player1Score.ToString();
+            player2ScoreText.text = player2Score.ToString();
         }
     }
 
