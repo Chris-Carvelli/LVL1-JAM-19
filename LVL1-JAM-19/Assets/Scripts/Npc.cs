@@ -1,41 +1,68 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
-[RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class Npc : MonoBehaviour {
-    NavMeshAgent agent;
+    Rigidbody2D body;
+    public float roamRadius = 1;
+    public float speed = 1;
+
+    Vector3 targetPosition;
+    bool isMovingTowardsTarget = false;
     Vector3 startPosition;
-    public float roamRadius = 4;
+    bool isRoaming = true;
 
     private void Awake() {
-        agent = GetComponent<NavMeshAgent>();
+        body = GetComponent<Rigidbody2D>();
+    }
+
+    private void Start() {
         startPosition = transform.position;
+        targetPosition = startPosition;
     }
-    
+
     void Update() {
-        if (!agent.hasPath && !agent.pathPending) {
-            agent.destination = RandomNavmeshLocation(roamRadius);
+        if (isRoaming) {
+            if (!isMovingTowardsTarget) {
+                targetPosition = getRandomTargetLocation(roamRadius);
+                isMovingTowardsTarget = true;
+            }
+            if (isMovingTowardsTarget){
+                moveNpc();
+            }
         }
     }
 
-    public Vector3 RandomNavmeshLocation(float radius) {
-        Vector3 randomDirection = Random.insideUnitSphere * radius;
-        randomDirection += startPosition;
-        
-        NavMeshHit hit;
-        Vector3 finalPosition = Vector3.zero;
 
-        if (NavMesh.SamplePosition(randomDirection, out hit, radius, 1)) {
-            finalPosition = hit.position;
-
-        } else if (NavMesh.SamplePosition(startPosition, out hit, radius, 1)) {
-            finalPosition = hit.position;
-
-        } else {
-            finalPosition = startPosition;
+    void moveNpc() {
+        if (Vector2.Distance(transform.position, targetPosition) < 0.01f) {
+            isMovingTowardsTarget = false;
+            return;
         }
-        return finalPosition;
+        Vector2 directionVector = (targetPosition - transform.position).normalized;
+        float xVel = directionVector.x * speed;
+        float yVel = directionVector.y * speed;
+
+        body.velocity = new Vector2(xVel, yVel);
+    }
+
+    Vector3 getRandomTargetLocation(float radius) {
+        Vector3 randomDirection = Random.insideUnitCircle * radius;
+        Vector3 destination = randomDirection + startPosition;
+
+        if (NpcManager.instance.isPointWithinBorders(destination)) {
+            return destination;
+        }
+
+        // Default to start position
+        return startPosition;
+    }
+
+    /// <summary>
+    /// Stops the npc from roaming, makes them stand still
+    /// </summary>
+    public void stopRoaming() {
+        isRoaming = false;
     }
 }
