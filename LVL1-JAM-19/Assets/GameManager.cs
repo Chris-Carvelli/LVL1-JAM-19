@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public struct PlayerInfo {
@@ -132,6 +133,10 @@ public class GameManager : MonoBehaviour
         if (gameOverEvent != null) {
             gameOverEvent.Invoke();
         }
+    }
+
+    public void restartGame() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
 
