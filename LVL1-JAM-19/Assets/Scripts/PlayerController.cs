@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
@@ -11,11 +12,14 @@ public class PlayerController : MonoBehaviour
 
 	[Header("movement")]
 	public float speed = 1;
-	//TODO if we don't use analog stricks, this will be better than rely on input settings
-	//public float accelleration = 1;
-	//public AnimationCurve accellerationCurve;
+    //TODO if we don't use analog stricks, this will be better than rely on input settings
+    //public float accelleration = 1;
+    //public AnimationCurve accellerationCurve;
 
-	private string horAxis;
+    [SerializeField] private UnityEvent _OnMoveTrigger;
+    [SerializeField] private UnityEvent _OnStopTrigger;
+
+    private string horAxis;
 	private string verAxis;
 
 	//public Vector2 xMargins = new Vector2(-14, 14);
@@ -32,23 +36,35 @@ public class PlayerController : MonoBehaviour
 		verAxis = $"Vertical_{playerNumber}";
 	}
 
-	// Update is called once per frame
-	void Update()
+    // Update is called once per frame
+    void Update()
     {
-		float xVel = Input.GetAxis(horAxis) * speed;
-		float yVel = Input.GetAxis(verAxis) * speed;
+        float xVel = Input.GetAxis(horAxis) * speed;
+        float yVel = Input.GetAxis(verAxis) * speed;
 
-		body.velocity = new Vector2(xVel, yVel);
+        body.velocity = new Vector2(xVel, yVel);
+        float debug = body.velocity.magnitude;
+        Debug.Log("Magnitude is " + debug);
+        if (body.velocity.magnitude > 0.1)
+        {
+            _OnMoveTrigger.Invoke();
+        }
+        if (body.velocity.magnitude <= 0)
+        {
+            _OnStopTrigger.Invoke();
+        }
 
-		//float xCoord = transform.position.x + Input.GetAxis(horAxis) * speed;
-		//float yCoord = transform.position.y + Input.GetAxis(verAxis) * speed;
 
-		//Vector3 deltaV = new Vector3(
-		//	Mathf.Clamp(xCoord, xMargins.x, xMargins.y),
-		//	Mathf.Clamp(yCoord, yMargins.x, yMargins.y),
-		//	0
-		//	);
 
-		//transform.position = deltaV;
-	}
+        //float xCoord = transform.position.x + Input.GetAxis(horAxis) * speed;
+        //float yCoord = transform.position.y + Input.GetAxis(verAxis) * speed;
+
+        //Vector3 deltaV = new Vector3(
+        //	Mathf.Clamp(xCoord, xMargins.x, xMargins.y),
+        //	Mathf.Clamp(yCoord, yMargins.x, yMargins.y),
+        //	0
+        //	);
+
+        //transform.position = deltaV;
+    }
 }
