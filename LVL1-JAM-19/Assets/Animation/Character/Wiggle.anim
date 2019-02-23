@@ -31,6 +31,19 @@ AnimationClip:
     path: Body
     classID: 212
     script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 21300000, guid: 3d7fc60504f644be48c51847490be05a, type: 3}
+    - time: 0.11666667
+      value: {fileID: 21300000, guid: 60c56dee4be3b4617b025a5ec12458ca, type: 3}
+    - time: 0.23333333
+      value: {fileID: 21300000, guid: f6946bc52a5714486ae7995c1eedcb9e, type: 3}
+    - time: 0.35000002
+      value: {fileID: 21300000, guid: 3d7fc60504f644be48c51847490be05a, type: 3}
+    attribute: m_Sprite
+    path: Body/Eyeballs
+    classID: 212
+    script: {fileID: 0}
   m_SampleRate: 60
   m_WrapMode: 0
   m_Bounds:
@@ -45,17 +58,28 @@ AnimationClip:
       typeID: 212
       customType: 23
       isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 1580192315
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
     pptrCurveMapping:
     - {fileID: 21300000, guid: ebf495df01e46418faa29e3cd77b4d0c, type: 3}
     - {fileID: 21300000, guid: a511f911bc571477cb39a30a44f4e666, type: 3}
     - {fileID: 21300000, guid: 2b5c52c90009c4e5b880675d6ed63725, type: 3}
     - {fileID: 21300000, guid: 2b5c52c90009c4e5b880675d6ed63725, type: 3}
+    - {fileID: 21300000, guid: 3d7fc60504f644be48c51847490be05a, type: 3}
+    - {fileID: 21300000, guid: 60c56dee4be3b4617b025a5ec12458ca, type: 3}
+    - {fileID: 21300000, guid: f6946bc52a5714486ae7995c1eedcb9e, type: 3}
+    - {fileID: 21300000, guid: 3d7fc60504f644be48c51847490be05a, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.35000002
+    m_StopTime: 0.3666667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
