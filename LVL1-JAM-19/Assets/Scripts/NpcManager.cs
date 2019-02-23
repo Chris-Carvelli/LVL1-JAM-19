@@ -68,4 +68,8 @@ public class NpcManager : MonoBehaviour {
     public bool isPointWithinBorders(Vector2 point) {
         return point.x >= levelMinCoord.x && point.x <= levelMaxCoord.x && point.y >= levelMinCoord.y && point.y <= levelMaxCoord.y;
     }
+
+	private void OnCollisionEnter2D(Collision2D collision) {
+		
+	}
 }

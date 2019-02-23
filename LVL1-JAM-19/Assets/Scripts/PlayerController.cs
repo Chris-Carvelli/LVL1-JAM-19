@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+public enum Formation {
+	Blob,
+	Katamari
+}
+
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
 	[Header("main")]
 	[Range(1, 2)]
 	public int playerNumber = 1;
+	public Formation formation = Formation.Blob;
 
 	public List<SpriteRenderer> tintedRendereres;
 
@@ -41,21 +47,29 @@ public class PlayerController : MonoBehaviour
 		verAxis = $"Vertical_{playerNumber}";
 	}
 
+	public Vector3 vel;
 	// Update is called once per frame
 	void Update()
     {
 		float xVel = Input.GetAxis(horAxis) * speed;
 		float yVel = Input.GetAxis(verAxis) * speed;
-		Vector3 vel = new Vector2(xVel, yVel);
+		vel = new Vector2(xVel, yVel);
 
 		body.velocity = vel;
 
+		
 		if (vel.magnitude > 0) {
-			float angle = Mathf.Atan2(vel.y, vel.x) * Mathf.Rad2Deg;
-			Quaternion targetDir = Quaternion.AngleAxis(angle, Vector3.forward);
-            _OnMoveTrigger.Invoke();
-			childrenContainer.transform.rotation = Quaternion.RotateTowards(targetDir, childrenContainer.transform.rotation, 0);
+			if (formation == Formation.Blob) {
+				float angle = Mathf.Atan2(vel.y, vel.x) * Mathf.Rad2Deg;
+				Quaternion targetDir = Quaternion.AngleAxis(angle, Vector3.forward);
+				childrenContainer.transform.rotation = Quaternion.RotateTowards(targetDir, childrenContainer.transform.rotation, 0);
+			}
+			else
+				childrenContainer.transform.rotation = Quaternion.identity;
+
+			_OnMoveTrigger.Invoke();
 		}
+
 
         if (vel.magnitude <= 0)
         {
