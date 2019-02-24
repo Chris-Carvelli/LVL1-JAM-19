@@ -38,6 +38,10 @@ public class NPCAloneController : MonoBehaviour
 			NPCBlobConroller other = collision.gameObject.GetComponent<NPCBlobConroller>();
 
 			controller.targetPc = other != null ? other.targetPc : collision.gameObject.GetComponent<PlayerController>();
+
+			//FIXME sometimes happens, unclear consequences
+			if (controller.targetPc == null)
+				return;
 			transform.SetParent(controller.targetPc.getTargetTransform());
 			controller.i = ++controller.targetPc.childrenCount;
 
