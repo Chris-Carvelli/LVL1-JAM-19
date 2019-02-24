@@ -94,6 +94,9 @@ public class NpcManager : MonoBehaviour {
     }
 
     bool positionContainsAPlayer(Vector2 point) {
+        if (GameManager.getManager() == null || !GameManager.getManager().enabled) {
+            return false;
+        }
         float marginToPlayers = 2;
 
         foreach (PlayerInfo playerInfo in GameManager.getManager().players) {

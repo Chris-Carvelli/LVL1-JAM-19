@@ -65,6 +65,9 @@ public class GameManager : MonoBehaviour
         if (_gameState == GameState.StartCountDown) {
             startCountDown();
         }
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            exitToMenu();
+        }
     }
 
     void startCountDown() {
@@ -137,6 +140,20 @@ public class GameManager : MonoBehaviour
         if (gameOverEvent != null) {
             gameOverEvent.Invoke();
         }
+    }
+
+    public void exitToMenu() {
+        if (SceneManager.sceneCountInBuildSettings == 0) {
+            return;
+        }
+        SceneManager.LoadScene(0);
+    }
+
+    public void startGame() {
+        if (SceneManager.sceneCountInBuildSettings <= 1) {
+            return;
+        }
+        SceneManager.LoadScene(1);
     }
 
     public void restartGame() {
