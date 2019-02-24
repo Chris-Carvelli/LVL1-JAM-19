@@ -142,10 +142,16 @@ public class GameManager : MonoBehaviour
     }
 
     public void exitToMenu() {
+        if (SceneManager.sceneCountInBuildSettings == 0) {
+            return;
+        }
         SceneManager.LoadScene(0);
     }
 
     public void startGame() {
+        if (SceneManager.sceneCountInBuildSettings <= 1) {
+            return;
+        }
         SceneManager.LoadScene(1);
     }
 
