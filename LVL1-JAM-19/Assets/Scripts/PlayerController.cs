@@ -61,9 +61,9 @@ public class PlayerController : MonoBehaviour
         }
 		float xVel = Input.GetAxis(horAxis) * speed;
 		float yVel = Input.GetAxis(verAxis) * speed;
-		vel = new Vector2(xVel, yVel);
+		vel = new Vector2(xVel, yVel).normalized;
 
-		body.velocity = vel;
+		body.velocity = vel * speed;
 
 		
 		if (vel.magnitude > 0) {
