@@ -181,7 +181,10 @@ public class NPCBlobConroller : MonoBehaviour
 			yield return new WaitForSeconds(0.1f);
 		}
 
-		Destroy(gameObject);
+        // Reset layer before destroying gameobject, used for the score system
+        gameObject.layer = LayerMask.NameToLayer("Npc");
+
+        Destroy(gameObject);
 	}
 
 	public void stun() {
@@ -212,9 +215,12 @@ public class NPCBlobConroller : MonoBehaviour
 				renderer.color = colors[i % 2];
 			yield return new WaitForSeconds(0.1f);
 		}
+        NpcManager.instance.spawnNpc(transform.position, GetComponent<Npc>().originalPrefab);
 
-		NpcManager.instance.spawnNpc(transform.position, GetComponent<Npc>().originalPrefab);
-		Destroy(gameObject);
+        // Reset layer before destroying gameobject, used for the score system
+        gameObject.layer = LayerMask.NameToLayer("Npc");
+
+        Destroy(gameObject);
 
 	}
 }
