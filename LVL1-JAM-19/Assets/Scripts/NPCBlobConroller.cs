@@ -184,6 +184,7 @@ public class NPCBlobConroller : MonoBehaviour
 			yield return new WaitForSeconds(0.1f);
 		}
 
+		NpcManager.instance.npcPrefabs.Remove(GetComponent<Npc>());
         Destroy(gameObject);
 	}
 

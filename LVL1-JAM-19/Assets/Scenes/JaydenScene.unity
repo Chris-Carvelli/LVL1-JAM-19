@@ -11205,10 +11205,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstaclePrefabs:
   - {fileID: 6200335737193427744, guid: a91ca1ad00df4304f8038794fb34d69e, type: 3}
-  - {fileID: 789166921526115669, guid: 54d5bd7aa12d3ae43a02478c2fa95358, type: 3}
-  - {fileID: 5185963531951728236, guid: 883aa97d6f9ccf24bbad1c8a826e1cc8, type: 3}
   obstacles: []
-  initialObstaclesCount: 0
+  initialObstaclesCount: 15
   topBorder: {fileID: 1655339633}
   bottomBorder: {fileID: 1926782958}
   leftBorder: {fileID: 473496721}
@@ -12741,7 +12739,7 @@ GameObject:
   m_Layer: 0
   m_Name: spawn1
   m_TagString: Untagged
-  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -13270,7 +13268,7 @@ GameObject:
   m_Layer: 0
   m_Name: spawn2
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
