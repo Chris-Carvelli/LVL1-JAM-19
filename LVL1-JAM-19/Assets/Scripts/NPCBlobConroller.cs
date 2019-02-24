@@ -174,15 +174,15 @@ public class NPCBlobConroller : MonoBehaviour
 				new Color(0.3f, 0.3f, 0.3f)
 			};
 
-		var i = 15;
+        // Reset layer before destroying gameobject, used for the score system
+        gameObject.layer = LayerMask.NameToLayer("Npc");
+
+        var i = 15;
 		for (; i >= 0; i--) {
 			foreach (SpriteRenderer renderer in renderers)
 				renderer.color = colors[i % 2];
 			yield return new WaitForSeconds(0.1f);
 		}
-
-        // Reset layer before destroying gameobject, used for the score system
-        gameObject.layer = LayerMask.NameToLayer("Npc");
 
         Destroy(gameObject);
 	}
@@ -209,7 +209,10 @@ public class NPCBlobConroller : MonoBehaviour
 				new Color(0.3f, 0.3f, 0.3f)
 			};
 
-		var i = 15;
+        // Reset layer before destroying gameobject, used for the score system
+        gameObject.layer = LayerMask.NameToLayer("Npc");
+
+        var i = 15;
 		for (; i >= 0; i--) {
 			foreach (SpriteRenderer renderer in renderers)
 				renderer.color = colors[i % 2];
@@ -217,8 +220,6 @@ public class NPCBlobConroller : MonoBehaviour
 		}
         NpcManager.instance.spawnNpc(transform.position, GetComponent<Npc>().originalPrefab);
 
-        // Reset layer before destroying gameobject, used for the score system
-        gameObject.layer = LayerMask.NameToLayer("Npc");
 
         Destroy(gameObject);
 
