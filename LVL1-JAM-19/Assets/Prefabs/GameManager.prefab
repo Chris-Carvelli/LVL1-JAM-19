@@ -66,16 +66,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65f78ce23fb24f94bbab7ef6619f0e66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testInputs: 0
   players:
   - prefab: {fileID: 4374092658635594002, guid: 357fbb6f436f74999baf174446d335e0,
       type: 3}
     playerColor: {r: 0.12941177, g: 0.5882353, b: 0.9529412, a: 1}
     teamColor: {r: 0.73333335, g: 0.87058824, b: 0.9843137, a: 1}
+    teamColorDark: {r: 0, g: 0, b: 0, a: 0}
     spawn: {fileID: 0}
   - prefab: {fileID: 4374092658635594002, guid: 9053a8c6a6f82499ebf02afafb766a43,
       type: 3}
     playerColor: {r: 0.95686275, g: 0.2627451, b: 0.21176471, a: 1}
     teamColor: {r: 1, g: 0.8039216, b: 0.8235294, a: 1}
+    teamColorDark: {r: 0, g: 0, b: 0, a: 0}
     spawn: {fileID: 0}
   player1Score: 0
   player2Score: 0
@@ -163,9 +166,56 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   gameOverEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 166891271}
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  gameOverSounds:
+  - {fileID: 8300000, guid: 164659a776aec5447965428c2078dcfa, type: 3}
+  - {fileID: 8300000, guid: 9f66cffe7a1317d49a182cc86ade5e49, type: 3}
+  - {fileID: 8300000, guid: 371ac2ea3a4e80345bdb9c971a6ae140, type: 3}
+  - {fileID: 8300000, guid: 807c6d781032df34ba3628f1935eb9b3, type: 3}
+  - {fileID: 8300000, guid: a7a58887ddae7a7449abf1b8611307b9, type: 3}
+  - {fileID: 8300000, guid: 8aa34d7a2ff6d2147b248010e97c6ec1, type: 3}
+  - {fileID: 8300000, guid: 8c31e19d0da7876458cba7f0059bca0a, type: 3}
+  - {fileID: 8300000, guid: 16fe849c140d55247b25f29c0377426c, type: 3}
+  - {fileID: 8300000, guid: b31b31ceb0399094fbd0eebe6122ac0e, type: 3}
+  - {fileID: 8300000, guid: 01e98c8917bfd13478a707dc28d2753c, type: 3}
+  - {fileID: 8300000, guid: cd246d86c3b6031438980b4973271113, type: 3}
+  - {fileID: 8300000, guid: 51f0ec198edca784b9cdb424600d2944, type: 3}
+  - {fileID: 8300000, guid: bf425b748ef025e42b7ea4178c392677, type: 3}
+  - {fileID: 8300000, guid: 557e9baf578746d429d5469f6a82757c, type: 3}
+  - {fileID: 8300000, guid: 7e7233bfbbdf34543ab3597b9ed46a00, type: 3}
+  - {fileID: 8300000, guid: 48a70a5f74931f34d8082d86c6fe1985, type: 3}
+  - {fileID: 8300000, guid: 5c5c56c977909b142ae0808413d7a680, type: 3}
+  - {fileID: 8300000, guid: 354f9a591b5819a439aa651aea848681, type: 3}
+  - {fileID: 8300000, guid: fc0c04e537917e242a1805e7cddf8d24, type: 3}
+  - {fileID: 8300000, guid: dbfc87adbe0d20b41a2194da9f02e844, type: 3}
+  - {fileID: 8300000, guid: bd916a934bfa6c940a86381ec3812d18, type: 3}
+  - {fileID: 8300000, guid: 5738ebc609435034da8a8aef7069757e, type: 3}
+  - {fileID: 8300000, guid: 6da9db03ebb5091409f050eedb845c77, type: 3}
+  - {fileID: 8300000, guid: 51438db7bda59ab4fb40833decc90205, type: 3}
+  - {fileID: 8300000, guid: 1871c64cb30763f428679f6f7175cc10, type: 3}
+  - {fileID: 8300000, guid: 1f294e92cfde2dc46b7b077b6dbdf76f, type: 3}
+  - {fileID: 8300000, guid: 131b690e445980c4c9e11566ee3afde5, type: 3}
+  - {fileID: 8300000, guid: 7c599e862c7f15a458b23f4812ea250f, type: 3}
+  - {fileID: 8300000, guid: 6800c036746ef6842b106379e7b80dfb, type: 3}
+  - {fileID: 8300000, guid: f56ae352c25ec624d9f2700d05d5f821, type: 3}
+  - {fileID: 8300000, guid: d8e842548ec3eaa4b85615ffb4273ac5, type: 3}
+  - {fileID: 8300000, guid: ef793a1f3c352f543bb0ae572768abe8, type: 3}
+  - {fileID: 8300000, guid: c8745c2933b855e4b9dcea93efdb600e, type: 3}
+  player1ScoreText: {fileID: 0}
+  player2ScoreText: {fileID: 0}
 --- !u!82 &166891271
 AudioSource:
   m_ObjectHideFlags: 0
