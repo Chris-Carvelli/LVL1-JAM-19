@@ -234,7 +234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   noiseIntensity: 0.5
   targetPc: {fileID: 0}
-  team: 0
+  team: -1
   i: 0
   speed: 20
   maxSpeed: 30

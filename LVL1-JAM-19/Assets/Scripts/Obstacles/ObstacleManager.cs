@@ -94,7 +94,11 @@ public class ObstacleManager : MonoBehaviour {
 	}
 
 	bool positionContainsAPlayer(Vector2 point) {
-		float marginToPlayers = 2;
+        if (GameManager.getManager() == null || !GameManager.getManager().enabled)
+        {
+            return false;
+        }
+        float marginToPlayers = 2;
 
 		foreach (PlayerInfo playerInfo in GameManager.getManager().players) {
 			if (point.x >= playerInfo.spawn.position.x - marginToPlayers && point.x <= playerInfo.spawn.position.x + marginToPlayers && point.y >= playerInfo.spawn.position.y - marginToPlayers && point.y <= playerInfo.spawn.position.y + marginToPlayers) {

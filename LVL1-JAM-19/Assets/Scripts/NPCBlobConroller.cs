@@ -14,7 +14,7 @@ public class NPCBlobConroller : MonoBehaviour
 
 
 	public PlayerController targetPc;
-	public int team;
+	public int team =-1;
 	public int i;
 
 	public float speed = 10;
@@ -199,7 +199,7 @@ public class NPCBlobConroller : MonoBehaviour
 	private IEnumerator _stun() {
 		Color[] colors;
 
-		if (team > 0)
+		if (team > -1)
 			colors = new[] {
 				GameManager.getManager().players[team].teamColor,
 				GameManager.getManager().players[team].teamColorDark
