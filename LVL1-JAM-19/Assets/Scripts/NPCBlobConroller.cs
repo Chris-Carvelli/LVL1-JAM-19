@@ -163,7 +163,7 @@ public class NPCBlobConroller : MonoBehaviour
 	private IEnumerator _kill() {
 		Color[] colors;
 
-		if (team > 0)
+		if (team > -1)
 			colors = new[] {
 				GameManager.getManager().players[team].teamColor,
 				GameManager.getManager().players[team].teamColorDark

@@ -11185,6 +11185,34 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &796295314 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4911295806279647918, guid: 6253d0758bd0549cfa9d26152c22bfa3,
+    type: 3}
+  m_PrefabInstance: {fileID: 4911295806442081704}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &796295318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 796295314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f3fcc060f5862041bffdefa107e8966, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstaclePrefabs:
+  - {fileID: 6200335737193427744, guid: a91ca1ad00df4304f8038794fb34d69e, type: 3}
+  - {fileID: 789166921526115669, guid: 54d5bd7aa12d3ae43a02478c2fa95358, type: 3}
+  - {fileID: 5185963531951728236, guid: 883aa97d6f9ccf24bbad1c8a826e1cc8, type: 3}
+  obstacles: []
+  initialObstaclesCount: 0
+  topBorder: {fileID: 1655339633}
+  bottomBorder: {fileID: 1926782958}
+  leftBorder: {fileID: 473496721}
+  rightBorder: {fileID: 685260658}
 --- !u!1 &803212583
 GameObject:
   m_ObjectHideFlags: 0
@@ -11484,7 +11512,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.05583444, b: 0, a: 1}
+  m_Color: {r: 0.95686275, g: 0.2627451, b: 0.21176471, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -13201,7 +13229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.33575773, b: 1, a: 1}
+  m_Color: {r: 0.12941177, g: 0.5882353, b: 0.9529412, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -24421,7 +24449,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 4911295806442081704}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 796295314}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65f78ce23fb24f94bbab7ef6619f0e66, type: 3}
