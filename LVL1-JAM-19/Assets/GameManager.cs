@@ -36,12 +36,19 @@ public class GameManager : MonoBehaviour
 
     public List<UnityEvent> countDownEvents;
     public UnityEvent gameOverEvent;
+    private List<UnityEvent> gameOverEvents = new List<UnityEvent>();
+    public List<AudioClip> gameOverSounds;
     public Text player1ScoreText, player2ScoreText;
+
+    AudioSource audioSource;
 
     private void Awake() {
 		if (_instance == null)
 			_instance = this;
-	}
+
+        audioSource = GetComponent<AudioSource>();
+
+    }
 
 	// Start is called before the first frame update
 	void Start()
@@ -60,6 +67,7 @@ public class GameManager : MonoBehaviour
             pc.setTint(player.playerColor);
 			pc.transform.position = player.spawn.position;
 		}
+        setupGameOverEvents();
     }
 
     private void Update() {
@@ -141,6 +149,28 @@ public class GameManager : MonoBehaviour
         if (gameOverEvent != null) {
             gameOverEvent.Invoke();
         }
+        if (gameOverEvents != null) {
+            StartCoroutine(playGameOverEvents());
+        }
+    }
+
+    IEnumerator playGameOverEvents() {
+        foreach (UnityEvent gameOverEvent in gameOverEvents) {
+            gameOverEvent.Invoke();
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
+
+    void setupGameOverEvents() {
+        for (int i = 0; i < 5; i++) {
+            UnityEvent newEvent = new UnityEvent();
+            newEvent.AddListener(playRandomGameOverSound);
+            gameOverEvents.Add(newEvent);
+        }
+    }
+
+    void playRandomGameOverSound() {
+        audioSource.PlayOneShot(gameOverSounds[Random.Range(0, gameOverSounds.Count)]);
     }
 
     public void exitToMenu() {
