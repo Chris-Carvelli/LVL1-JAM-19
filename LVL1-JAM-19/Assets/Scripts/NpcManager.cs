@@ -24,7 +24,7 @@ public class NpcManager : MonoBehaviour {
     }
 
     void Update() {
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0) && GameManager.getManager().testInputs) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 

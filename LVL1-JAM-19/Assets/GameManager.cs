@@ -16,6 +16,7 @@ public struct PlayerInfo {
 
 public class GameManager : MonoBehaviour
 {
+	public bool testInputs = false;
 	private static GameManager _instance = null;
 	public List<PlayerInfo> players;
 

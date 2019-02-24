@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.088226385, g: 0.07991072, b: 0.06502908, a: 1}
+  m_IndirectSpecularColor: {r: 0.08822634, g: 0.07991072, b: 0.06502902, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10935,7 +10935,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: af0b907bfd14f0e48a0cd29d997a54bf, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -11492,7 +11492,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: af0b907bfd14f0e48a0cd29d997a54bf, type: 3}
     m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 1
@@ -13209,7 +13209,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: af0b907bfd14f0e48a0cd29d997a54bf, type: 3}
     m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 1
@@ -24373,6 +24373,46 @@ PrefabInstance:
       propertyPath: player2ScoreText
       value: 
       objectReference: {fileID: 1100176729}
+    - target: {fileID: 4911295806279647905, guid: 6253d0758bd0549cfa9d26152c22bfa3,
+        type: 3}
+      propertyPath: players.Array.data[0].teamColorDark.r
+      value: 0.06666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911295806279647905, guid: 6253d0758bd0549cfa9d26152c22bfa3,
+        type: 3}
+      propertyPath: players.Array.data[0].teamColorDark.g
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911295806279647905, guid: 6253d0758bd0549cfa9d26152c22bfa3,
+        type: 3}
+      propertyPath: players.Array.data[0].teamColorDark.b
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911295806279647905, guid: 6253d0758bd0549cfa9d26152c22bfa3,
+        type: 3}
+      propertyPath: players.Array.data[0].teamColorDark.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911295806279647905, guid: 6253d0758bd0549cfa9d26152c22bfa3,
+        type: 3}
+      propertyPath: players.Array.data[1].teamColorDark.r
+      value: 0.7176471
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911295806279647905, guid: 6253d0758bd0549cfa9d26152c22bfa3,
+        type: 3}
+      propertyPath: players.Array.data[1].teamColorDark.g
+      value: 0.10980392
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911295806279647905, guid: 6253d0758bd0549cfa9d26152c22bfa3,
+        type: 3}
+      propertyPath: players.Array.data[1].teamColorDark.b
+      value: 0.10980392
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911295806279647905, guid: 6253d0758bd0549cfa9d26152c22bfa3,
+        type: 3}
+      propertyPath: players.Array.data[1].teamColorDark.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6253d0758bd0549cfa9d26152c22bfa3, type: 3}
 --- !u!114 &4911295806442081705 stripped
