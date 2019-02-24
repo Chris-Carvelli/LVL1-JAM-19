@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Animations;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Collider2D))]
 public class NPCBlobConroller : MonoBehaviour
 {
 	public float noiseIntensity = 0.5f;
@@ -20,6 +21,7 @@ public class NPCBlobConroller : MonoBehaviour
 	public float maxSpeed = 2;
 
 	private Rigidbody2D body;
+	private Collider2D coll;
 	private SpriteRenderer[] renderers;
 
 	private Quaternion startRot;
@@ -35,8 +37,8 @@ public class NPCBlobConroller : MonoBehaviour
 
 
 	private void Awake() {
-
 		renderers = GetComponentsInChildren<SpriteRenderer>();
+		coll = GetComponent<Collider2D>();
 	}
 
 	// Start is called before the first frame update
@@ -151,6 +153,10 @@ public class NPCBlobConroller : MonoBehaviour
 	}
 
 	public void kill() {
+		bouncing = true;
+		collTime = float.MaxValue;
+		coll.isTrigger = true;
+
 		StartCoroutine(_kill());
 	}
 
@@ -176,6 +182,40 @@ public class NPCBlobConroller : MonoBehaviour
 		}
 
 		Destroy(gameObject);
+	}
+
+	public void stun() {
+		bouncing = true;
+		collTime = float.MaxValue;
+		coll.isTrigger = true;
+
+		StartCoroutine(_stun());
+	}
+
+	private IEnumerator _stun() {
+		Color[] colors;
+
+		if (team > 0)
+			colors = new[] {
+				GameManager.getManager().players[team].teamColor,
+				GameManager.getManager().players[team].teamColorDark
+			};
+		else
+			colors = new[] {
+				Color.white,
+				new Color(0.3f, 0.3f, 0.3f)
+			};
+
+		var i = 15;
+		for (; i >= 0; i--) {
+			foreach (SpriteRenderer renderer in renderers)
+				renderer.color = colors[i % 2];
+			yield return new WaitForSeconds(0.1f);
+		}
+
+		NpcManager.instance.spawnNpc(transform.position, GetComponent<Npc>().originalPrefab);
+		Destroy(gameObject);
+
 	}
 }
 

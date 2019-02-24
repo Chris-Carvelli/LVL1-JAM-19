@@ -21,6 +21,7 @@ public class Npc : MonoBehaviour {
     LayerMask currentLayer;
 
     public List<UnityEvent> idleEvents;
+	public Npc originalPrefab;
 
     private void Awake() {
         body = GetComponent<Rigidbody2D>();

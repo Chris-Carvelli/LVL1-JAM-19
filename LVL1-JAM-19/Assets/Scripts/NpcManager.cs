@@ -59,24 +59,30 @@ public class NpcManager : MonoBehaviour {
         }
     }
 
-    void spawnNpc(Vector3 spawnPoint) {
-        if (!isPointWithinBorders(spawnPoint)) {
-            return;
-        }
-        Npc npcPrefab = npcPrefabs[Random.Range(0, npcPrefabs.Count)];
-        Npc newNpc = Instantiate(npcPrefab, spawnPoint, npcPrefab.transform.rotation);
-
-        //TMP
-        newNpc.transform.position = new Vector3(
-            newNpc.transform.position.x,
-            newNpc.transform.position.y,
-            0
-        );
-
-        npcs.Add(newNpc);
+    public void spawnNpc(Vector3 spawnPoint) {
+		Npc npcPrefab = npcPrefabs[Random.Range(0, npcPrefabs.Count)];
+		spawnNpc(spawnPoint, npcPrefab);
     }
 
-    public void clearAllNpcs() {
+	public void spawnNpc(Vector3 spawnPoint, Npc npcPrefab) {
+		if (!isPointWithinBorders(spawnPoint)) {
+			return;
+		}
+		
+		Npc newNpc = Instantiate(npcPrefab, spawnPoint, npcPrefab.transform.rotation);
+		newNpc.originalPrefab = npcPrefab;
+
+		//TMP
+		newNpc.transform.position = new Vector3(
+			newNpc.transform.position.x,
+			newNpc.transform.position.y,
+			0
+		);
+
+		npcs.Add(newNpc);
+	}
+
+	public void clearAllNpcs() {
         foreach (Npc npc in npcs) {
             Destroy(npc.gameObject);
         }
