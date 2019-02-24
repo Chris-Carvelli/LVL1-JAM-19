@@ -27,7 +27,7 @@ public class NPCAloneController : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D collision) {
 		if (gameObject.layer == LayerMask.NameToLayer("Npc") &&
-			collision.gameObject.layer != LayerMask.NameToLayer("obstacle")) {
+			(collision.gameObject.layer == LayerMask.NameToLayer("team_1") || collision.gameObject.layer == LayerMask.NameToLayer("team_2"))) {
 			OnJoinsBlob.Invoke();
 
 			int team = collision.gameObject.layer == LayerMask.NameToLayer("team_1") ? 0 : 1;
@@ -38,6 +38,10 @@ public class NPCAloneController : MonoBehaviour
 			NPCBlobConroller other = collision.gameObject.GetComponent<NPCBlobConroller>();
 
 			controller.targetPc = other != null ? other.targetPc : collision.gameObject.GetComponent<PlayerController>();
+
+			//FIXME sometimes happens, unclear consequences
+			if (controller.targetPc == null)
+				return;
 			transform.SetParent(controller.targetPc.getTargetTransform());
 			controller.i = ++controller.targetPc.childrenCount;
 

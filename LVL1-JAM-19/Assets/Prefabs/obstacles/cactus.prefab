@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ace8cb305a7fb142a15a3435f6f6775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onCOllision:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1001 &2972123839266890267
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -79,6 +84,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 551176559289073114, guid: 5a04a85d5b4b46c4e99ea88715b2b9c0,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 551176559289073114, guid: 5a04a85d5b4b46c4e99ea88715b2b9c0,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 551176559289073114, guid: 5a04a85d5b4b46c4e99ea88715b2b9c0,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 551176559289073112, guid: 5a04a85d5b4b46c4e99ea88715b2b9c0,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1.2049294
+      objectReference: {fileID: 0}
+    - target: {fileID: 551176559289073112, guid: 5a04a85d5b4b46c4e99ea88715b2b9c0,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -3.237842
+      objectReference: {fileID: 0}
     - target: {fileID: 551176559289073113, guid: 5a04a85d5b4b46c4e99ea88715b2b9c0,
         type: 3}
       propertyPath: m_Color.r
@@ -94,6 +124,12 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0.654902
       objectReference: {fileID: 0}
+    - target: {fileID: 551176559289073113, guid: 5a04a85d5b4b46c4e99ea88715b2b9c0,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ef5de13a5c6b1fe4e98b4a1e15fa01a5,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a04a85d5b4b46c4e99ea88715b2b9c0, type: 3}
 --- !u!1 &3357775245154672591 stripped

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 [System.Serializable]
 public struct PlayerInfo {
@@ -117,7 +118,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void checkGameState() {
-        if (player1Score + player2Score >= NpcManager.instance.npcs.Count) {
+		if (player1Score + player2Score >= NpcManager.instance.npcs.Where(npc => npc != null).ToList().Count) {
             // All npcs have been collected
             gameOver();
             player1ScoreText.text = player1Score.ToString();

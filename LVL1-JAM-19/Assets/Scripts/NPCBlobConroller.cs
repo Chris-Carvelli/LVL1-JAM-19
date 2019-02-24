@@ -184,6 +184,7 @@ public class NPCBlobConroller : MonoBehaviour
 			yield return new WaitForSeconds(0.1f);
 		}
 
+		NpcManager.instance.npcs.Remove(GetComponent<Npc>());
         Destroy(gameObject);
 	}
 
@@ -221,6 +222,7 @@ public class NPCBlobConroller : MonoBehaviour
         NpcManager.instance.spawnNpc(transform.position, GetComponent<Npc>().originalPrefab);
 
 
+        NpcManager.instance.npcs.Remove(GetComponent<Npc>());
         Destroy(gameObject);
 
 	}
